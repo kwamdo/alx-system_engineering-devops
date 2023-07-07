@@ -1,7 +1,7 @@
-#!/bin/bash
-sudo cp /etc/hosts /etc/hosts.bak
-sudo sed -i 's/localhost$/localhost\n127.0.0.2/' /etc/hosts
-sudo sed -i 's/facebook.com/8.8.8.8 facebook.com/' /etc/hosts
-sudo systemctl restart networking.service
-echo "Configuration completed. localhost now resolves to 127.0.0.2 and facebook.com resolves to 8.8.8.8."
+#!/usr/bin/env bash
+# Change localhost to 127.0.0.2
+# Change facebook.com to 8.8.8.8
 
+cp /etc/hosts ~/hosts.new
+sed -i 's/127.*$/127.0.0.2 localhost\n8.8.8.8 facebook.com/' ~/hosts.new
+cp -f ~/hosts.new /etc/hosts
